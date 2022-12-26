@@ -9,7 +9,15 @@
     "lint": "next lint",
     "prettier:check": "prettier --check .",
     "prettier:list": "prettier --list-different .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "prepare": "husky install",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{css,js,json,jsx,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -26,6 +34,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
     "tailwindcss": "^3.2.4"
