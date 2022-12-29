@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0.625rem #7b3838;
+    @apply bg-transparent rounded-lg transition-colors duration-700 hover:bg-black;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-[0.9375rem] bg-[#ff0266];
+    background-image: -webkit-linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.4) 50%,
+      transparent,
+      transparent
+    );
+  }
+
+  body {
+    @apply bg-black-primary text-white-primary;
+  }
+
+  main {
+    @apply px-2 sm:pl-4;
+  }
+
+  a,
+  button {
+    @apply transition duration-200 ease-linear inline-block outline-none border-none focus:outline-none;
+  }
+
+  input {
+    @apply outline-none border-0 focus:outline-none;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-2xl;
+  }
+
+  h4 {
+    @apply text-base md:text-lg;
+  }
+
+  h5 {
+    @apply text-sm md:text-base;
+  }
+
+  h6 {
+    @apply text-xs md:text-sm;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-white mb-2;
+  }
+}

@@ -6,6 +6,23 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      black: {
+        DEFAULT: "#000",
+        primary: "#222222",
+      },
+      white: {
+        DEFAULT: "#fff",
+        primary: "#eceff1",
+      },
+      red: {
+        light: "#faa2b0",
+        DEFAULT: "#f00",
+        primary: "#ff0266",
+      },
+    },
   },
   plugins: [],
 };
