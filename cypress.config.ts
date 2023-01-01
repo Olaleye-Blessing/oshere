@@ -6,6 +6,7 @@ export default defineConfig({
       framework: "next",
       bundler: "webpack",
     },
+    viewportWidth: 1000,
   },
 
   e2e: {
