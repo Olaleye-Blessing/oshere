@@ -11,7 +11,8 @@
     "prettier:list": "prettier --list-different .",
     "prettier:write": "prettier --write .",
     "prepare": "husky install",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "cy:open": "cypress open"
   },
   "lint-staged": {
     "*.{css,js,json,jsx,ts,tsx}": [
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "cypress": "^12.2.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
