@@ -12,7 +12,9 @@
     "prettier:write": "prettier --write .",
     "prepare": "husky install",
     "precommit": "lint-staged",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:comps": "yarn cy:run --component"
   },
   "lint-staged": {
     "*.{css,js,json,jsx,ts,tsx}": [
