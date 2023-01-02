@@ -1,7 +1,5 @@
-name: Cypress tests
-
+name: Cypress E2E tests
 on: [push]
-
 jobs:
   test:
     runs-on: ubuntu-latest
