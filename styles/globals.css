@@ -5,6 +5,7 @@
 @layer base {
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 0.625rem #7b3838;
+    box-shadow: inset 0 0 0.625rem #7b3838;
     @apply bg-transparent rounded-lg transition-colors duration-700 hover:bg-black;
   }
 
@@ -77,12 +78,14 @@
 @layer components {
   /* layout */
   .layout {
-    @apply md:flex items-start justify-start;
+    @apply md:grid md:grid-cols-[12rem_1fr] xl:grid-cols-[15rem_3fr_1fr];
   }
 
   /* navigations */
   .navbar {
     @apply flex items-center justify-between py-4 px-2 shadow-xl mb-2 relative md:block md:mb-0 md:sticky md:top-0 md:left-0 md:shadow-none md:bg-black-2 md:pl-6 md:pr-8 md:self-start md:h-screen md:flex-1 md:max-w-[15rem];
+
+    @apply col-start-1 col-end-2 row-start-1 row-end-3;
   }
 
   .navbar__list--cont {
@@ -97,5 +100,14 @@
 
   .scrollbar__hide::-webkit-scrollbar {
     @apply w-0 h-0;
+  }
+
+  .scrollbar__show {
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+
+  .scrollbar__show::-webkit-scrollbar {
+    @apply w-auto h-auto;
   }
 }
