@@ -1,12 +1,13 @@
 import { FC } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { medias } from "./utlis";
+import { Category } from "@/interfaces/common";
 
-const Index: FC = () => {
-  const searchParams = useSearchParams();
-  const pageCategory = searchParams.get("category") || "tvshows";
+interface Props {
+  pageCategory: Category;
+}
 
+const Index: FC<Props> = ({ pageCategory }) => {
   return (
     <nav data-cy="nav__media" aria-label="media">
       <ul className="flex items-center justify-start space-x-2">

@@ -9,10 +9,11 @@ export const useTMDB = <ResponseType>(url: string, page?: number) => {
   fetchUrl.searchParams.set("language", "en-US");
   if (page) fetchUrl.searchParams.set("page", page.toString());
 
-  const { data, error, isLoading } = useSWR<
-    TMDBResponse<ResponseType>,
-    TMDBError
-  >(fetchUrl.toString());
+  const {
+    data,
+    error,
+    isLoading: loading,
+  } = useSWR<ResponseType, TMDBError>(fetchUrl.toString());
 
   let errMessage: string | undefined;
 
@@ -26,6 +27,6 @@ export const useTMDB = <ResponseType>(url: string, page?: number) => {
   return {
     data,
     error: errMessage,
-    isLoading,
+    loading,
   };
 };
