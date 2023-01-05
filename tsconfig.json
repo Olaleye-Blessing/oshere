@@ -21,6 +21,7 @@
       "@/configs/*": ["configs/*"],
       "@/hooks/*": ["hooks/*"],
       "@/interfaces/*": ["interfaces/*"],
+      "@/modules/*": ["modules/*"],
       "@/reducers/*": ["reducers/*"],
       "@/utils/*": ["utils/*"]
     }

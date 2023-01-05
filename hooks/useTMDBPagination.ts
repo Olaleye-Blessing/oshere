@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { TMDBPaginationReducer, initialState } from "@/reducers/TMDBPagination";
 import { useTMDB } from "@/hooks/useTMDB";
+import { TMDBResponse } from "@/interfaces/fetch";
 
 export const useTMDBPagination = <DataType>(url: string) => {
   const [state, dispatch] = useReducer(
@@ -11,7 +12,7 @@ export const useTMDBPagination = <DataType>(url: string) => {
   // create a function that increments the page number
   const fetchMore = () => dispatch({ type: "FETCH_MORE" });
 
-  const { data, error } = useTMDB<DataType>(url, state.data.page);
+  const { data, error } = useTMDB<TMDBResponse<DataType>>(url, state.data.page);
 
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" });

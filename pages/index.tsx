@@ -1,43 +1,62 @@
+import { useSearchParams } from "next/navigation";
 import MediaNav from "@/components/navigation/media/Index";
 import GenresNav from "@/components/navigation/genres/Index";
 import MainMedias from "@/components/medias/Main";
-import Aside from "modules/pages/home/Aside";
+import Aside from "@/modules/pages/home/Aside";
+import GenreMedias from "@/modules/pages/home/GenreMedias";
+import { Category } from "@/interfaces/common";
+import { useTMDB } from "@/hooks/useTMDB";
+import GeneralMedias from "@/modules/pages/home/GeneralMedias";
 
-const items = [
-  {
-    src: "https://image.tmdb.org/t/p/w500/hoVuI69nygLQBJ4FqgRKnukDeKt.jpg",
-    title: "The Shawshank Redemption",
-    overview:
-      "Two imprisoned actors bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-  },
-  {
-    src: "https://image.tmdb.org/t/p/w500/hoVuI69nygLQBJ4FqgRKnukDeKt.jpg",
-    title: "Merlin",
-    overview:
-      "The adventures of Merlin, king Arthur and his knights of the round table.",
-  },
-];
+interface Genre {
+  id: number;
+  name: string;
+}
+
+interface GenresResponse {
+  genres: Genre[];
+}
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const category = (searchParams.get("category") || "tvshows") as Category;
+  const genre = searchParams.get("genre");
+  const {
+    data: genresData,
+    error: genreError,
+    loading: genreLoading,
+  } = useTMDB<GenresResponse>(
+    `/genre/${category === "tvshows" ? "tv" : "movie"}/list`
+  );
+
   return (
     <>
       <main data-cy="homepage" className="overflow-x-hidden md:pt-4">
         <header>
-          <MediaNav />
-          <GenresNav />
-        </header>
-        <section className="">
-          <MainMedias
-            medias={[
-              ...items,
-              ...items,
-              ...items,
-              ...items,
-              ...items,
-              ...items,
-            ]}
+          <MediaNav pageCategory={category} />
+
+          <GenresNav
+            category={category}
+            loading={genreLoading}
+            error={genreError}
+            genres={genresData?.genres || []}
+            genre={genre}
           />
-        </section>
+        </header>
+        {genre ? (
+          <section className="">
+            <h1 className="mb-3">
+              <span className="capitalize">{category}</span>{" "}
+              <span className="text-red-primary">/</span>{" "}
+              <span className="text-white text-opacity-40">
+                {genresData?.genres.find((g) => g.id === Number(genre))?.name}
+              </span>
+            </h1>
+            <GenreMedias category={category} genre={genre} />
+          </section>
+        ) : (
+          <GeneralMedias />
+        )}
       </main>
       <Aside />
     </>

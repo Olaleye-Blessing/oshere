@@ -1,19 +1,16 @@
+import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
+import { Category, Movie, TvShow } from "@/interfaces/common";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-interface Media {
-  src: string;
-  title: string;
-  overview: string;
-}
-
 interface MediasProps {
-  medias: Media[];
+  medias: (TvShow | Movie)[];
+  category?: Category;
 }
 
-const Main: FC<MediasProps> = ({ medias }) => {
+const Main: FC<MediasProps> = ({ medias, category = "tvshows" }) => {
   return (
     <ul className="flex flex-wrap justify-start gap-5 gap-y-8">
       {medias.map((media, index) => {
@@ -24,13 +21,23 @@ const Main: FC<MediasProps> = ({ medias }) => {
               className="flex flex-col w-full h-full pb-12 transition-all duration-200 ease-in-out rounded-lg overflow-hidden bg-black bg-opacity-20 shadow-lg ring-white-primary ring-opacity-10 ring-1 hover:shadow-lg hover:bg-opacity-40 focus:ring-red-primary focus:ring-opacity-20 hover:scale-[1.03] focus:scale-[1.03]"
             >
               <figure>
-                <Image src={media.src} alt="" width={500} height={500} />
+                <Image
+                  src={`${TMDB_IMAGE_BASE_URL}/w500${media.poster_path}`}
+                  alt=""
+                  width={500}
+                  height={500}
+                  className="h-full object-cover"
+                />
               </figure>
               <div className="px-3">
                 <p className="truncate text-white-primary text-opacity-50 my-2">
                   {media.overview}
                 </p>
-                <h4 className="leading-6">{media.title}</h4>
+                <h4 className="leading-6">
+                  {category === "tvshows"
+                    ? (media as TvShow).name
+                    : (media as Movie).title}
+                </h4>
               </div>
               <div className="px-3 mt-auto">
                 <button
