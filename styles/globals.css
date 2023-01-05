@@ -110,4 +110,9 @@
   .scrollbar__show::-webkit-scrollbar {
     @apply w-auto h-auto;
   }
+
+  /* errors */
+  .error {
+    @apply text-red;
+  }
 }

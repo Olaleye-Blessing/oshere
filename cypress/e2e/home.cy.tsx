@@ -1,8 +1,14 @@
 /// <reference types="cypress" />
 
+import { TMDB_BASE_URL } from "@/configs/paths";
+
 describe("Home", () => {
   beforeEach(() => {
     cy.visit("/");
+
+    cy.intercept("GET", `${TMDB_BASE_URL}/person/popular*`, {
+      fixture: "tmdb/popular-people.json",
+    }).as("getPopularPeople");
   });
 
   it("renders home page", () => {
@@ -44,6 +50,20 @@ describe("Home", () => {
   it("navigates to different genres", () => {
     cy.get("[data-cy='nav__genre--1']").click();
     cy.url().should("include", "?category=tvshows&genre=1");
+  });
+
+  it("<PeopleMedia /> renders loading indicator on initial mount", () => {
+    cy.get("[data-cy=people-media-loading]").should("exist");
+    cy.get("[data-cy=people-media]").should("not.exist");
+  });
+
+  it("<PeopleMedia /> renders the list of people", () => {
+    cy.get("[data-cy=people-media-loading]").should("exist");
+
+    cy.wait("@getPopularPeople");
+
+    cy.get("[data-cy=people-media-loading]").should("not.exist");
+    cy.get("[data-cy=people-media]").should("exist");
   });
 });
 

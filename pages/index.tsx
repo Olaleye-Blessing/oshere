@@ -1,7 +1,7 @@
 import MediaNav from "@/components/navigation/media/Index";
 import GenresNav from "@/components/navigation/genres/Index";
 import MainMedias from "@/components/medias/Main";
-import PeopleMedias from "@/components/medias/People";
+import Aside from "modules/pages/home/Aside";
 
 const items = [
   {
@@ -17,13 +17,6 @@ const items = [
       "The adventures of Merlin, king Arthur and his knights of the round table.",
   },
 ];
-
-const person = {
-  src: "https://image.tmdb.org/t/p/w500/hoVuI69nygLQBJ4FqgRKnukDeKt.jpg",
-  title: "The Shawshank Redemption",
-  department: "Acting",
-  popularity: 2_000,
-};
 
 export default function Home() {
   return (
@@ -46,9 +39,7 @@ export default function Home() {
           />
         </section>
       </main>
-      <aside className="overflow-x-hidden px-2 mt-4 md:pl-4 xl:bg-black-2 xl:mt-0 xl:h-screen xl:sticky xl:top-0 xl:right-0">
-        <PeopleMedias people={Array.from({ length: 50 }, (_, i) => person)} />
-      </aside>
+      <Aside />
     </>
   );
 }
