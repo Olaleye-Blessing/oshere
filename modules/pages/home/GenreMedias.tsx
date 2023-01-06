@@ -27,16 +27,18 @@ const GenreMedias: FC<GenreMediasProps> = ({ category, genre }) => {
           category={category}
         />
       )}
-      {loading !== "idle" ? (
-        <LoadingIndicator dataCy="genre-media-loading" />
-      ) : error ? (
-        <p data-cy="genre-media-error" className="error">
-          {error}
-        </p>
-      ) : null}
-      {loading === "idle" && data?.total_pages !== data?.page && (
-        <button onClick={fetchMore}>Load more</button>
-      )}
+      <div className="flex items-center justify-center my-4">
+        {loading !== "idle" ? (
+          <LoadingIndicator dataCy="genre-media-loading" />
+        ) : error ? (
+          <p data-cy="genre-media-error" className="error">
+            {error}
+          </p>
+        ) : null}
+        {loading === "idle" && data?.total_pages !== data?.page && (
+          <button onClick={fetchMore}>Load more</button>
+        )}
+      </div>
     </>
   );
 };
