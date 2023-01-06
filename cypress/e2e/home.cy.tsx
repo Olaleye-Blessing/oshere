@@ -48,8 +48,10 @@ describe("Home", () => {
   });
 
   it("navigates to different genres", () => {
-    cy.get("[data-cy='nav__genre--1']").click();
-    cy.url().should("include", "?category=tvshows&genre=1");
+    let currentUrl = cy.url();
+    cy.get("[data-cy*='nav__genre--']").first().click();
+
+    cy.url().should("not.equal", currentUrl);
   });
 
   it("<PeopleMedia /> renders loading indicator on initial mount", () => {

@@ -8,14 +8,24 @@ import { FC } from "react";
 interface MediasProps {
   medias: (TvShow | Movie)[];
   category?: Category;
+  ulClassName?: string;
+  liClassName?: string;
 }
 
-const Main: FC<MediasProps> = ({ medias, category = "tvshows" }) => {
+const Main: FC<MediasProps> = ({
+  medias,
+  category = "tvshows",
+  ulClassName = "flex flex-wrap justify-start gap-5 gap-y-8",
+  liClassName = "",
+}) => {
   return (
-    <ul className="flex flex-wrap justify-start gap-5 gap-y-8">
+    <ul className={ulClassName}>
       {medias.map((media, index) => {
         return (
-          <li key={index} className="w-full mx-auto max-w-[15.625rem]">
+          <li
+            key={index}
+            className={`w-full mx-auto max-w-[15.625rem] ${liClassName}`}
+          >
             <Link
               href="/"
               className="flex flex-col w-full h-full pb-12 transition-all duration-200 ease-in-out rounded-lg overflow-hidden bg-black bg-opacity-20 shadow-lg ring-white-primary ring-opacity-10 ring-1 hover:shadow-lg hover:bg-opacity-40 focus:ring-red-primary focus:ring-opacity-20 hover:scale-[1.03] focus:scale-[1.03]"
