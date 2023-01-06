@@ -7,8 +7,20 @@ describe("Home", () => {
     cy.visit("/");
 
     cy.intercept("GET", `${TMDB_BASE_URL}/person/popular*`, {
-      fixture: "tmdb/popular-people.json",
+      fixture: "tmdb/people.json",
     }).as("getPopularPeople");
+
+    cy.intercept("GET", `${TMDB_BASE_URL}/tv/**`, {
+      fixture: "tmdb/tvs.json",
+    }).as("tvShows");
+
+    cy.intercept("GET", `${TMDB_BASE_URL}/movie/**`, {
+      fixture: "tmdb/movies.json",
+    }).as("tvShows");
+
+    cy.intercept("GET", `${TMDB_BASE_URL}/genre/**`, {
+      fixture: "tmdb/genres.json",
+    }).as("genres");
   });
 
   it("renders home page", () => {
@@ -48,10 +60,10 @@ describe("Home", () => {
   });
 
   it("navigates to different genres", () => {
-    let currentUrl = cy.url();
-    cy.get("[data-cy*='nav__genre--']").first().click();
+    cy.wait("@genres");
+    cy.get("[data-cy='nav__genre--10759']").click();
 
-    cy.url().should("not.equal", currentUrl);
+    cy.url().should("include", "?category=tvshows&genre=10759");
   });
 
   it("<PeopleMedia /> renders loading indicator on initial mount", () => {
