@@ -5,7 +5,7 @@ interface Data<ResultType> {
   total_results: number;
 }
 
-interface State<DataType> {
+export interface State<DataType> {
   data: Data<DataType>;
   error: undefined | string;
   loading: "idle" | "init" | "more";

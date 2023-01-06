@@ -9,7 +9,6 @@ export const useTMDBPagination = <DataType>(url: string) => {
     initialState
   );
 
-  // create a function that increments the page number
   const fetchMore = () => dispatch({ type: "FETCH_MORE" });
 
   const { data, error } = useTMDB<TMDBResponse<DataType>>(url, state.data.page);
@@ -17,6 +16,10 @@ export const useTMDBPagination = <DataType>(url: string) => {
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" });
   }, []);
+
+  useEffect(() => {
+    dispatch({ type: "RESET" });
+  }, [url]);
 
   useEffect(() => {
     if (data) {
@@ -29,10 +32,6 @@ export const useTMDBPagination = <DataType>(url: string) => {
       dispatch({ type: "FETCH_FAILURE", payload: error });
     }
   }, [error]);
-
-  useEffect(() => {
-    dispatch({ type: "RESET" });
-  }, [url]);
 
   return { ...state, fetchMore };
 };

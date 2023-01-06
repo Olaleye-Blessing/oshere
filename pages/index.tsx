@@ -55,7 +55,7 @@ export default function Home() {
             <GenreMedias category={category} genre={genre} />
           </section>
         ) : (
-          <GeneralMedias />
+          <GeneralMedias category={category} />
         )}
       </main>
       <Aside />
