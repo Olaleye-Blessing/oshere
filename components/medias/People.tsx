@@ -15,7 +15,7 @@ const People: FC = () => {
       {loading !== "init" && (
         <ul
           data-cy="people-media"
-          className="mt-3 flex whitespace-nowrap items-center justify-start overflow-x-scroll scrollbar__hide space-x-5 pr-5 sm:space-x-8 xl:flex-col xl:space-x-0 xl:gap-y-5 xl:max-h-[80%] xl:px-2"
+          className="mt-3 flex whitespace-nowrap items-center justify-start overflow-x-scroll scrollbar__hide space-x-5 pr-5 sm:space-x-8 xl:flex-col xl:space-x-0 xl:gap-y-5 xl:px-2 xl:overflow-x-hidden xl:scrollbar__show"
         >
           {data?.results.map((person) => {
             return (
@@ -56,7 +56,9 @@ const People: FC = () => {
         </p>
       ) : null}
       {loading === "idle" && data?.total_pages !== data?.page && (
-        <button onClick={fetchMore}>Load more</button>
+        <button onClick={fetchMore} className="block my-2 mx-auto">
+          Load more
+        </button>
       )}
     </>
   );

@@ -1,8 +1,7 @@
 import { FC } from "react";
-import { useTMDB } from "@/hooks/useTMDB";
 import { useTMDBPagination } from "@/hooks/useTMDBPagination";
 import TMDBPaginatedComponent from "@/components/TMDBPaginatedComponent";
-import { TvShow, Movie, Category } from "@/interfaces/common";
+import { TvShow, Movie } from "@/interfaces/common";
 import MainMedias from "@/components/medias/Main";
 import { GeneralMediasProps } from "./GeneralMedias";
 
@@ -16,7 +15,7 @@ const MediasSection: FC<MediasSectionProps> = ({ title, category, url }) => {
   const { data } = state;
 
   return (
-    <section className="mb-10">
+    <section className="mb-6">
       <header>
         <h3 className="capitalize">{title}</h3>
       </header>

@@ -12,16 +12,20 @@ const TMDBPaginatedComponent: FC<
   return (
     <>
       {loading !== "init" && data && children}
-      {loading !== "idle" ? (
-        <LoadingIndicator dataCy="people-media-loading" />
-      ) : error ? (
-        <p data-cy="people-media-error" className="error">
-          {error}
-        </p>
-      ) : null}
-      {loading === "idle" && data?.total_pages !== data?.page && (
-        <button onClick={fetchMore}>Load more</button>
-      )}
+      <div className="flex items-center justify-center mx-auto mt-3">
+        {loading !== "idle" ? (
+          <LoadingIndicator dataCy="people-media-loading" />
+        ) : error ? (
+          <p data-cy="people-media-error" className="error">
+            {error}
+          </p>
+        ) : null}
+        {loading === "idle" && data?.total_pages !== data?.page && (
+          <button onClick={fetchMore} className="">
+            Load more
+          </button>
+        )}
+      </div>
     </>
   );
 };

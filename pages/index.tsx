@@ -45,7 +45,7 @@ export default function Home() {
         </header>
         {genre ? (
           <section className="">
-            <h1 className="mb-3">
+            <h1 className="mb-3 text-2xl md:text-4xl">
               <span className="capitalize">{category}</span>{" "}
               <span className="text-red-primary">/</span>{" "}
               <span className="text-white text-opacity-40">
