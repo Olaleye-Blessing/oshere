@@ -29,7 +29,7 @@
   }
 
   main {
-    @apply w-full px-2 md:pl-4;
+    @apply w-full px-2 md:pl-4 xl:pt-4;
   }
 
   a,
@@ -90,6 +90,11 @@
 
   .navbar__list--cont {
     @apply px-2 bg-black-primary absolute left-0 top-[3.8rem] h-0 w-full overflow-hidden transition-all duration-500 md:static md:h-auto md:px-0 md:bg-transparent;
+  }
+
+  /* asides */
+  .aside {
+    @apply overflow-x-hidden px-2 mt-4 md:pl-4 xl:pl-2 xl:bg-black-2 xl:mt-0 xl:h-screen xl:sticky xl:top-0 xl:right-0 xl:flex xl:flex-col xl:py-4;
   }
 
   /* scrollbars */
