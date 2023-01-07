@@ -4,6 +4,7 @@ import { Category, MovieMediaPage, TvMediaPage } from "@/interfaces/common";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import Detail from "@/modules/pages/media_detail/Index";
+import SimilarMedias from "@/modules/pages/media_detail/Similar";
 
 const MediaDetail: NextPage = () => {
   let { query } = useRouter();
@@ -14,7 +15,7 @@ const MediaDetail: NextPage = () => {
 
   return (
     <>
-      <main className="relative h-[calc(100vh-8rem)] px-0 md:h-screen">
+      <main className="relative h-[calc(100vh-8rem)] px-0 md:h-screen xl:pt-0">
         {loading ? (
           <LoadingIndicator />
         ) : data ? (
@@ -23,6 +24,7 @@ const MediaDetail: NextPage = () => {
           <p className="error">{error || "unknown"}</p>
         )}
       </main>
+      <SimilarMedias category={category as Category} mediaId={id as string} />
     </>
   );
 };
