@@ -3,7 +3,7 @@ import Link from "next/link";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import { Category } from "@/interfaces/common";
 
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
 }

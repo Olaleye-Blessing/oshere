@@ -13,7 +13,7 @@ export const useTMDB = <ResponseType>(url: string, page?: number) => {
     data,
     error,
     isLoading: loading,
-  } = useSWR<ResponseType, TMDBError>(fetchUrl.toString());
+  } = useSWR<ResponseType, TMDBError>(url ? fetchUrl.toString() : null);
 
   let errMessage: string | undefined;
 

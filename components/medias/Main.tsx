@@ -27,7 +27,7 @@ const Main: FC<MediasProps> = ({
             className={`w-full mx-auto max-w-[15.625rem] ${liClassName}`}
           >
             <Link
-              href="/"
+              href={`/medias/${category}/${media.id}`}
               className="flex flex-col w-full h-full pb-12 transition-all duration-200 ease-in-out rounded-lg overflow-hidden bg-black bg-opacity-20 shadow-lg ring-white-primary ring-opacity-10 ring-1 hover:shadow-lg hover:bg-opacity-40 focus:ring-red-primary focus:ring-opacity-20 hover:scale-[1.03] focus:scale-[1.03]"
             >
               <figure>
