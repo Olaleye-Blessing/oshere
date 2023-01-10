@@ -9,13 +9,17 @@ import SimilarMedias from "@/modules/pages/media_detail/Similar";
 const MediaDetail: NextPage = () => {
   let { query } = useRouter();
   const { category, id } = query;
+  const mediaUrl = category
+    ? `${category === "tvshows" ? "/tv" : "/movie"}/${id}`
+    : "";
   const { data, loading, error } = useTMDB<TvMediaPage & MovieMediaPage>(
-    category ? `${category === "tvshows" ? "/tv" : "/movie"}/${id}` : ""
+    `${mediaUrl}?append_to_response=videos`
   );
 
   return (
     <>
-      <main className="relative h-[calc(100vh-8rem)] px-0 md:h-screen xl:pt-0">
+      {/* h-screen */}
+      <main className="relative h-[calc(100vh-8rem)] px-0 md:h-auto md:overflow-x-hidden xl:pt-0">
         {loading ? (
           <LoadingIndicator />
         ) : data ? (

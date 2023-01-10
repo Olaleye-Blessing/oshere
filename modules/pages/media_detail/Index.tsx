@@ -1,8 +1,9 @@
-import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
-import { Category, MovieMediaPage, TvMediaPage } from "@/interfaces/common";
+import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
+import { Category, MovieMediaPage, TvMediaPage } from "@/interfaces/common";
+import Trailers from "./Trailers";
 
 interface Props {
   media: TvMediaPage & MovieMediaPage;
@@ -24,7 +25,7 @@ const Index: FC<Props> = ({ media, category }) => {
           priority
         />
       </div>
-      <div className="relative z-[210] bg-black bg-opacity-80 h-full flex flex-col justify-center px-2 md:pl-4">
+      <div className="relative z-[210] bg-black bg-opacity-80 h-full flex flex-col justify-center px-2 md:p-4">
         <header className="flex items-center justify-start">
           <h1>{media.name || media.title || "No Title"}</h1>
         </header>
@@ -71,6 +72,7 @@ const Index: FC<Props> = ({ media, category }) => {
           <span className="mr-2">Release Date:</span>
           <span className="">{media.release_date || media.first_air_date}</span>
         </time>
+        <Trailers videos={media.videos} />
       </div>
     </>
   );
