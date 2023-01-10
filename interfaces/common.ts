@@ -29,7 +29,20 @@ export interface Movie extends Media {
   video: false;
 }
 
-interface MediaPage {
+export interface MediaTrailer {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+}
+
+export interface MediaPage {
   adult: boolean;
   backdrop_path: null | string;
   genres: Genre[];
@@ -49,6 +62,9 @@ interface MediaPage {
   tagline: string;
   vote_average: string;
   vote_count: number;
+  videos: {
+    results: MediaTrailer[];
+  };
 }
 
 export interface TvMediaPage extends MediaPage {
