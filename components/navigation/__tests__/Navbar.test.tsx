@@ -1,5 +1,11 @@
-import Navbar from "@/components/navigation/navbar/Index";
 import { render } from "@testing-library/react";
+import Navbar from "@/components/navigation/navbar/Index";
+
+jest.mock("next-auth/react", () => ({
+  useSession: () => ({
+    data: null,
+  }),
+}));
 
 describe("Navbar", () => {
   it("renders", () => {
