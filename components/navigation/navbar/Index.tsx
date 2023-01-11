@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import HomeLogo from "@/components/HomeLogo";
 import { categoryPages, generalPages } from "./utlis";
+import Auth from "./Auth";
 
 const navPages = [...generalPages, ...categoryPages];
 
@@ -72,6 +73,7 @@ const Index = () => {
             );
           })}
         </ul>
+        <Auth />
       </div>
     </nav>
   );
