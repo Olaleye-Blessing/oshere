@@ -12,6 +12,7 @@
     "prettier:write": "prettier --write .",
     "prepare": "husky install",
     "precommit": "lint-staged",
+    "test": "jest",
     "jest": "jest --watch"
   },
   "lint-staged": {
