@@ -14,6 +14,7 @@ const Index: FC<Props> = ({ pageCategory }) => {
         {medias.map(({ category, label }) => (
           <li key={category}>
             <Link
+              data-testid={`nav__media--category--${category}`}
               data-cy={`nav__media--category--${category}`}
               href={`/?category=${category}`}
               className={`${
