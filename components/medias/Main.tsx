@@ -1,9 +1,9 @@
-import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
-import { Category, Movie, TvShow } from "@/interfaces/common";
-import { UserGroupIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
+import { Category, Movie, TvShow } from "@/interfaces/common";
+import CreateCommunity from "@/components/buttons/CreateCommunity";
 
 interface MediasProps {
   medias: (TvShow | Movie)[];
@@ -50,14 +50,11 @@ const Main: FC<MediasProps> = ({
                 </h4>
               </div>
               <div className="px-3 mt-auto">
-                <button
-                  className="text-red-primary hover:text-white-primary focus:outline focus:outline-white"
-                  onClick={() => {
-                    alert("You clicked the group button!");
-                  }}
-                >
-                  <UserGroupIcon className="w-4 h-4" />
-                </button>
+                <CreateCommunity
+                  category={category}
+                  {...media}
+                  name={(media as TvShow).name || (media as Movie).title}
+                />
               </div>
             </Link>
           </li>
