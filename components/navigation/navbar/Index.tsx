@@ -24,7 +24,7 @@ const Index = () => {
   }, [pathname]);
 
   return (
-    <nav className="navbar">
+    <nav data-testid="navbar" className="navbar">
       <HomeLogo />
       <button
         data-cy="navbar__toggle"

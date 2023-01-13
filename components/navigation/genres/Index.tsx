@@ -8,7 +8,7 @@ export interface Genre {
   name: string;
 }
 
-interface Props {
+export interface Props {
   category: Category;
   loading: boolean;
   error: string | undefined;
@@ -28,9 +28,14 @@ const Index: FC<Props> = ({
   return (
     <div data-cy="nav__genres">
       {error ? (
-        <p className="error">{error}</p>
+        <p data-testid="genres-nav-error" className="error">
+          {error}
+        </p>
       ) : (
-        <ul className="mt-3 flex whitespace-nowrap items-center justify-start overflow-x-scroll scrollbar__hide space-x-5 pr-5 sm:space-x-8">
+        <ul
+          data-testid="genres-nav-data"
+          className="mt-3 flex whitespace-nowrap items-center justify-start overflow-x-scroll scrollbar__hide space-x-5 pr-5 sm:space-x-8"
+        >
           {genres.map((genre) => (
             <li key={genre.id} className="mb-2">
               <Link

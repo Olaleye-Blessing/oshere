@@ -10,7 +10,7 @@ const LoadingIndicator: FC<LoadingIndicatorProps> = ({
   className = "",
 }) => {
   return (
-    <div data-cy={dataCy} className={className}>
+    <div data-testid={dataCy} data-cy={dataCy} className={className}>
       Loading...
     </div>
   );
