@@ -20,3 +20,9 @@ export interface TMDBPerson {
   popularity: number;
   profile_path: string;
 }
+
+export interface Fetching<Data> {
+  loading: boolean;
+  error: string | null;
+  data: Data;
+}
