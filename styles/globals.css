@@ -116,6 +116,11 @@
     @apply w-auto h-auto;
   }
 
+  /* communities */
+  .communties {
+    @apply grid gap-10 grid-cols-[repeat(auto-fit,minmax(15rem,1fr))] auto-rows-[30rem];
+  }
+
   /* errors */
   .error {
     @apply text-red;
