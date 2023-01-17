@@ -1,15 +1,12 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import Header from "./Header";
 import Messages from "./Messages";
 import Chat from "./Chat";
+import { useCommunityContext } from "@/hooks/useCommunityContext";
 
 const Main: FC = () => {
-  const [info] = useState({
-    data: {},
-    loading: false,
-    error: null,
-  });
+  const { info } = useCommunityContext();
 
   return (
     <>

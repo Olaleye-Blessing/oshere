@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { CreateCommunityProps } from "@/components/buttons/CreateCommunity";
-import { createDoc } from "@/lib/firebase/general";
+import { createDoc, getDocument, getDocumentRef } from "@/lib/firebase/general";
 
 type Status = "authenticated" | "loading" | "unauthenticated";
 type CreateCommunity = (
@@ -24,6 +24,18 @@ export const createCommunity: CreateCommunity = async (status, data) => {
 
   try {
     await createDoc(communityFields, "communities", communityId);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const getCommunityRef = (id: string) =>
+  getDocumentRef(`communities/${id}`);
+
+export const getCommunity = async (ref: any) => {
+  try {
+    const community = await getDocument({ ref });
+    return community;
   } catch (error: any) {
     throw new Error(error);
   }
