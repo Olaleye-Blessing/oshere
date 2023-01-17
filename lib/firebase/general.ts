@@ -1,4 +1,5 @@
 import {
+  addDoc,
   doc,
   DocumentData,
   setDoc,
@@ -16,6 +17,14 @@ export const createDoc: CreateDoc = async (data, name, id) => {
   try {
     const docRef = doc(db, name, id);
     await setDoc(docRef, data, { merge: true });
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const createDocWithRef = async (ref: any, data: any) => {
+  try {
+    await addDoc(ref, data);
   } catch (error: any) {
     throw new Error(error);
   }

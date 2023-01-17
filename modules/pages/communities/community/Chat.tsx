@@ -1,8 +1,18 @@
 import { FC, useState } from "react";
+import { useSession } from "next-auth/react";
+import { AuthUser } from "@/interfaces/common";
+import { useCommunityContext } from "@/hooks/useCommunityContext";
+import { createCommunityMessage } from "@/lib/firebase/communities";
 
 interface Props {}
 
 const Chat: FC<Props> = () => {
+  const {
+    messages: { ref },
+  } = useCommunityContext();
+  const { data } = useSession();
+  const { user } = data as AuthUser;
+
   const [message, setMessage] = useState("");
 
   const handleSendMessage = async () => {
@@ -10,7 +20,17 @@ const Chat: FC<Props> = () => {
 
     if (!value) return;
 
-    console.log(value);
+    try {
+      await createCommunityMessage(ref, {
+        from: user.name,
+        value,
+        createdAt: new Date(),
+      });
+
+      setMessage("");
+    } catch (error) {
+      console.warn(error);
+    }
   };
 
   return (
