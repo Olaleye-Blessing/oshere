@@ -1,15 +1,13 @@
 import { NextPage } from "next";
-import { useRouter } from "next/router";
+import { Aside, Main } from "@/modules/pages/communities/community";
 
 const Community: NextPage = () => {
-  const router = useRouter();
-  console.log(router.query);
-
   return (
     <>
-      <main>
-        <h1>Community</h1>
-      </main>
+      <div className="relative flex items-start h-[calc(100vh-68px)] overflow-hidden md:h-screen">
+        <Main />
+        <Aside />
+      </div>
     </>
   );
 };
