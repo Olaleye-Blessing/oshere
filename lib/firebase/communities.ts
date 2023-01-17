@@ -2,11 +2,13 @@ import { query, limit, orderBy } from "firebase/firestore";
 import { CreateCommunityProps } from "@/components/buttons/CreateCommunity";
 import {
   createDoc,
+  createDocWithRef,
   getDocument,
   getDocumentRef,
   getDocumentsRef,
   getLiveDocuments,
 } from "@/lib/firebase/general";
+import { CommunityMessage } from "@/interfaces/community";
 
 type Status = "authenticated" | "loading" | "unauthenticated";
 type CreateCommunity = (
@@ -30,6 +32,17 @@ export const createCommunity: CreateCommunity = async (status, data) => {
 
   try {
     await createDoc(communityFields, "communities", communityId);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const createCommunityMessage = async (
+  ref: any,
+  data: CommunityMessage
+) => {
+  try {
+    await createDocWithRef(ref, data);
   } catch (error: any) {
     throw new Error(error);
   }
