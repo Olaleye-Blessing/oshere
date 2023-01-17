@@ -1,6 +1,14 @@
-import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import {
+  doc,
+  DocumentData,
+  setDoc,
+  collection,
+  getDocs,
+  getDoc,
+  onSnapshot,
+  QuerySnapshot,
+} from "firebase/firestore";
 import { db } from "@/configs/firebase";
-import { getDoc } from "@firebase/firestore";
 
 type CreateDoc = (data: any, name: string, id: string) => Promise<void>;
 
@@ -12,6 +20,8 @@ export const createDoc: CreateDoc = async (data, name, id) => {
     throw new Error(error);
   }
 };
+
+export const getDocumentsRef = (path: string) => collection(db, path);
 
 interface Document<Doc> {
   id: string;
@@ -33,6 +43,22 @@ export const getDocuments = async <Doc>(name: string) => {
   });
 
   return docs;
+};
+
+export const getLiveDocuments = (ref: any, callback: any) => {
+  const unsubscribe = onSnapshot(
+    ref,
+    (querySnapshot: QuerySnapshot<DocumentData>) => {
+      const docs: any[] = [];
+      querySnapshot.forEach((doc) => {
+        docs.push(doc.data());
+      });
+
+      callback(docs);
+    }
+  );
+
+  return unsubscribe;
 };
 
 export const getDocumentRef = (path: string) => doc(db, path);

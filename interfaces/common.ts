@@ -100,3 +100,12 @@ export interface MovieMediaPage extends MediaPage {
   title: string;
   video: boolean;
 }
+
+export interface AuthUser {
+  expires: string;
+  user: {
+    name: string;
+    email: string;
+    image: string;
+  };
+}

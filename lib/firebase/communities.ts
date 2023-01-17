@@ -1,6 +1,12 @@
-import toast from "react-hot-toast";
+import { query, limit, orderBy } from "firebase/firestore";
 import { CreateCommunityProps } from "@/components/buttons/CreateCommunity";
-import { createDoc, getDocument, getDocumentRef } from "@/lib/firebase/general";
+import {
+  createDoc,
+  getDocument,
+  getDocumentRef,
+  getDocumentsRef,
+  getLiveDocuments,
+} from "@/lib/firebase/general";
 
 type Status = "authenticated" | "loading" | "unauthenticated";
 type CreateCommunity = (
@@ -36,6 +42,20 @@ export const getCommunity = async (ref: any) => {
   try {
     const community = await getDocument({ ref });
     return community;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const getCommunityMessagesRef = (id: string) =>
+  getDocumentsRef(`communities/${id}/messages`);
+
+export const getCommunityMessages = (ref: any, callback: any) => {
+  try {
+    const messagesQuery = query(ref, orderBy("createdAt", "desc"), limit(60));
+    const unsubscribe = getLiveDocuments(messagesQuery, callback);
+
+    return unsubscribe;
   } catch (error: any) {
     throw new Error(error);
   }
