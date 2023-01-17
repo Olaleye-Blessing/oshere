@@ -1,4 +1,5 @@
 import {
+  Dispatch,
   FC,
   PropsWithChildren,
   createContext,
@@ -12,7 +13,9 @@ import { CommunityState } from "@/reducers/Community";
 import { CommunityReducer, initialCommunityState } from "@/reducers/Community";
 import { getCommunity, getCommunityRef } from "@/lib/firebase/communities";
 
-interface Context extends CommunityState {}
+interface Context extends CommunityState {
+  dispatch: Dispatch<any>;
+}
 
 export const CommunityContext = createContext<Context | undefined>(undefined);
 
@@ -78,7 +81,7 @@ export const CommunityProvider: FC<PropsWithChildren> = ({ children }) => {
     return <p className="error">You must be logged in to enter to chat</p>;
 
   return (
-    <CommunityContext.Provider value={{ ...state, data }}>
+    <CommunityContext.Provider value={{ ...state, data, dispatch }}>
       {children}
     </CommunityContext.Provider>
   );

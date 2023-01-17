@@ -1,8 +1,14 @@
-import { CommunityMetadata } from "@/interfaces/community";
+import { CommunityMessage, CommunityMetadata } from "@/interfaces/community";
 
 export interface CommunityState {
   info: {
     data: CommunityMetadata | null;
+    error: string | null;
+    loading: boolean;
+    ref: any;
+  };
+  messages: {
+    data: CommunityMessage[];
     error: string | null;
     loading: boolean;
     ref: any;
@@ -16,12 +22,18 @@ export const initialCommunityState: CommunityState = {
     loading: true,
     ref: null,
   },
+  messages: {
+    data: [],
+    error: null,
+    loading: true,
+    ref: null,
+  },
 };
 
 type SetRef = {
   type: "SET_REF";
   payload: {
-    key: "info";
+    key: "info" | "messages";
     ref: any;
   };
 };
@@ -29,7 +41,7 @@ type SetRef = {
 type Fetch = {
   type: "FETCH";
   payload: {
-    key: "info";
+    key: "info" | "messages";
   };
 };
 
@@ -40,7 +52,7 @@ type FetchInit = {
 type FetchSuccess = {
   type: "FETCH_SUCCESS";
   payload: {
-    key: "info";
+    key: "info" | "messages";
     data: any;
   };
 };
@@ -48,7 +60,7 @@ type FetchSuccess = {
 type FetchFailure = {
   type: "FETCH_FAILURE";
   payload: {
-    key: "info";
+    key: "info" | "messages";
     error: string;
   };
 };
