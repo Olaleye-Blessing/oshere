@@ -20,7 +20,7 @@ const Header: FC = () => {
     try {
       await updateUserData(authData!.user.id!, {
         key: "communities",
-        value: data!.id!,
+        value: { ...data },
         type: "array",
         nature: "remove",
       });

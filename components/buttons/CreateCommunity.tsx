@@ -30,7 +30,11 @@ const CreateCommunity: FC<CreateCommunityProps> = (props) => {
 
       await updateUserData(data!.user.id!, {
         key: "communities",
-        value: `${props.category}-${props.id}`,
+        value: {
+          id: `${props.category}-${props.id}`,
+          coverPhoto: props.poster_path,
+          name: props.name,
+        },
         type: "array",
         nature: "add",
       });
