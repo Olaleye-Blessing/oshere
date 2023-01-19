@@ -48,7 +48,7 @@ const Header: FC = () => {
         <ArrowLeftOnRectangleIcon className="" />
       </button>
       <button
-        className="text-[#3c4] flex items-center justify-center"
+        className="text-[#3c4] flex items-center justify-center lg:hidden"
         onClick={(e) => {
           e.stopPropagation();
           document.querySelector(".community__aside")?.classList.toggle("open");
