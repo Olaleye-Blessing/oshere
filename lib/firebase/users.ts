@@ -1,5 +1,11 @@
-import { arrayRemove, arrayUnion, updateDoc } from "firebase/firestore";
-import { getDocumentRef } from "./general";
+import {
+  DocumentData,
+  DocumentReference,
+  arrayRemove,
+  arrayUnion,
+  updateDoc,
+} from "firebase/firestore";
+import { getDocumentRef, getLiveDocument, getLiveDocuments } from "./general";
 
 type GeneralData = {
   key: string;
@@ -33,6 +39,19 @@ export const updateUserData = async (userId: string, data: UserData) => {
           ? data.value
           : getArrayData(data.nature, data.value),
     });
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
+export const getUserLiveData = (
+  userRef: DocumentReference<DocumentData>,
+  callback: any
+) => {
+  try {
+    let unsubscribe = getLiveDocument(userRef, callback);
+
+    return unsubscribe;
   } catch (error: any) {
     throw new Error(error);
   }

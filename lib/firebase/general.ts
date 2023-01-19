@@ -97,3 +97,11 @@ export const getDocument = async ({
     throw new Error(error);
   }
 };
+
+export const getLiveDocument = (ref: any, callback: any) => {
+  const unsubscribe = onSnapshot(ref, (doc: any) => {
+    callback(doc.data());
+  });
+
+  return unsubscribe;
+};

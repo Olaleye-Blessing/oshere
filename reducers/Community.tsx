@@ -1,4 +1,5 @@
 import { CommunityMessage, CommunityMetadata } from "@/interfaces/community";
+import { User } from "@/interfaces/user";
 
 export interface CommunityState {
   info: {
@@ -12,6 +13,11 @@ export interface CommunityState {
     error: string | null;
     loading: boolean;
     ref: any;
+  };
+  communities: {
+    data: User["communities"];
+    error: string | null;
+    loading: boolean;
   };
 }
 
@@ -28,6 +34,11 @@ export const initialCommunityState: CommunityState = {
     loading: true,
     ref: null,
   },
+  communities: {
+    data: [],
+    error: null,
+    loading: true,
+  },
 };
 
 type SetRef = {
@@ -41,7 +52,7 @@ type SetRef = {
 type Fetch = {
   type: "FETCH";
   payload: {
-    key: "info" | "messages";
+    key: "info" | "messages" | "communities";
   };
 };
 
@@ -52,7 +63,7 @@ type FetchInit = {
 type FetchSuccess = {
   type: "FETCH_SUCCESS";
   payload: {
-    key: "info" | "messages";
+    key: "info" | "messages" | "communities";
     data: any;
   };
 };
@@ -60,7 +71,7 @@ type FetchSuccess = {
 type FetchFailure = {
   type: "FETCH_FAILURE";
   payload: {
-    key: "info" | "messages";
+    key: "info" | "messages" | "communities";
     error: string;
   };
 };
