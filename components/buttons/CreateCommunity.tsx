@@ -32,6 +32,7 @@ const CreateCommunity: FC<CreateCommunityProps> = (props) => {
         key: "communities",
         value: `${props.category}-${props.id}`,
         type: "array",
+        nature: "add",
       });
 
       router.push(`/communities/${props.category}/${props.id}`);

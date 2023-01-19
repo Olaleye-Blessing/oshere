@@ -12,9 +12,11 @@ import LoadingIndicator from "@/components/LoadingIndicator";
 import { CommunityState } from "@/reducers/Community";
 import { CommunityReducer, initialCommunityState } from "@/reducers/Community";
 import { getCommunity, getCommunityRef } from "@/lib/firebase/communities";
+import { Session } from "next-auth";
 
 interface Context extends CommunityState {
   dispatch: Dispatch<any>;
+  data: Session | null;
 }
 
 export const CommunityContext = createContext<Context | undefined>(undefined);
