@@ -10,19 +10,9 @@ import {
 } from "@/lib/firebase/general";
 import { CommunityMessage } from "@/interfaces/community";
 
-type Status = "authenticated" | "loading" | "unauthenticated";
-type CreateCommunity = (
-  status: Status,
-  data: CreateCommunityProps
-) => Promise<any>;
+type CreateCommunity = (data: CreateCommunityProps) => Promise<any>;
 
-export const createCommunity: CreateCommunity = async (status, data) => {
-  if (status === "loading")
-    throw new Error("Please wait some seconds before trying again!");
-
-  if (status === "unauthenticated")
-    throw new Error("You need to be logged in!");
-
+export const createCommunity: CreateCommunity = async (data) => {
   const communityId = `${data.category}-${data.id}`;
 
   const communityFields = {

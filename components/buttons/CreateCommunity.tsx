@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
 import { Category } from "@/interfaces/common";
 import { createCommunity } from "@/lib/firebase/communities";
+import { updateUserData } from "@/lib/firebase/users";
 
 export interface CreateCommunityProps {
   category: Category;
@@ -15,11 +16,23 @@ export interface CreateCommunityProps {
 
 const CreateCommunity: FC<CreateCommunityProps> = (props) => {
   const router = useRouter();
-  const { status } = useSession();
+  const { status, data } = useSession();
 
   const handleCreateCommunity = async () => {
     try {
-      await createCommunity(status, props);
+      if (status === "loading")
+        throw new Error("Please wait some seconds before trying again!");
+
+      if (status === "unauthenticated")
+        throw new Error("You need to be logged in!");
+
+      await createCommunity(props);
+
+      await updateUserData(data!.user.id!, {
+        key: "communities",
+        value: `${props.category}-${props.id}`,
+        type: "array",
+      });
 
       router.push(`/communities/${props.category}/${props.id}`);
     } catch (error: any) {
