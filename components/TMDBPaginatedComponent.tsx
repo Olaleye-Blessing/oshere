@@ -4,11 +4,12 @@ import { State as TMDBPaginationState } from "@/reducers/TMDBPagination";
 
 interface TMDBPaginatedComponentProps extends TMDBPaginationState<any> {
   fetchMore: () => void;
+  buttonClassName?: string;
 }
 
 const TMDBPaginatedComponent: FC<
   PropsWithChildren<TMDBPaginatedComponentProps>
-> = ({ loading, data, error, fetchMore, children }) => {
+> = ({ loading, data, error, fetchMore, buttonClassName = "", children }) => {
   return (
     <>
       {loading !== "init" && data && children}
@@ -21,7 +22,7 @@ const TMDBPaginatedComponent: FC<
           </p>
         ) : null}
         {loading === "idle" && data?.total_pages !== data?.page && (
-          <button onClick={fetchMore} className="">
+          <button onClick={fetchMore} className={buttonClassName}>
             Load more
           </button>
         )}

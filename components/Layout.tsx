@@ -5,7 +5,7 @@ import Navbar from "@/components/navigation/navbar/Index";
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
 
-  const twoColumnLayout = ["/communities"];
+  const twoColumnLayout = ["/communities", "/search"];
 
   return (
     <div
