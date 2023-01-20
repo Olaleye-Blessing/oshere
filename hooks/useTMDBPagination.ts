@@ -14,11 +14,7 @@ export const useTMDBPagination = <DataType>(url: string) => {
   const { data, error } = useTMDB<TMDBResponse<DataType>>(url, state.data.page);
 
   useEffect(() => {
-    dispatch({ type: "FETCH_INIT" });
-  }, []);
-
-  useEffect(() => {
-    dispatch({ type: "RESET" });
+    dispatch({ type: url ? "FETCH_INIT" : "RESET" });
   }, [url]);
 
   useEffect(() => {

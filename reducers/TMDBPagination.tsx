@@ -26,7 +26,7 @@ export const initialState: State<any> = {
     total_results: 0,
   },
   error: undefined,
-  loading: "init",
+  loading: "idle",
 };
 
 export const TMDBPaginationReducer = <DataType,>(

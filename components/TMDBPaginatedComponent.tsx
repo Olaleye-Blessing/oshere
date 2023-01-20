@@ -21,7 +21,7 @@ const TMDBPaginatedComponent: FC<
             {error}
           </p>
         ) : null}
-        {loading === "idle" && data?.total_pages !== data?.page && (
+        {loading === "idle" && data?.total_pages > data?.page && (
           <button onClick={fetchMore} className={buttonClassName}>
             Load more
           </button>
