@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import SearchForm from "@/components/navigation/navbar/Search";
 import { useTMDBPagination } from "@/hooks/useTMDBPagination";
 import { Movie, TvShow } from "@/interfaces/common";
-import TMDBPaginatedComponent from "@/components/TMDBPaginatedComponent";
+import TMDBPaginated from "@/components/TMDBPaginated";
 import Media from "@/components/medias/Media";
 
 const Search: NextPage = () => {
@@ -43,7 +43,7 @@ const Search: NextPage = () => {
         </header>
         <main className="md:px-0">
           <div>
-            <TMDBPaginatedComponent {...result} buttonClassName="mb-3">
+            <TMDBPaginated {...result} buttonClassName="mb-3">
               <ul className="mt-2 grid grid-cols-1 gap-y-8 gap-x-4 sm:grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
                 {medias?.map((item) => (
                   <Media
@@ -54,7 +54,7 @@ const Search: NextPage = () => {
                   />
                 ))}
               </ul>
-            </TMDBPaginatedComponent>
+            </TMDBPaginated>
           </div>
         </main>
       </div>

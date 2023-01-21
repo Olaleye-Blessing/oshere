@@ -2,22 +2,31 @@ import { FC, PropsWithChildren, ReactNode } from "react";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import { State as TMDBPaginationState } from "@/reducers/TMDBPagination";
 
-interface TMDBPaginatedComponentProps extends TMDBPaginationState<any> {
+export interface TMDBPaginatedProps extends TMDBPaginationState<any> {
   fetchMore: () => void;
   buttonClassName?: string;
+  dataCyLoading?: string;
+  dataCyError?: string;
 }
 
-const TMDBPaginatedComponent: FC<
-  PropsWithChildren<TMDBPaginatedComponentProps>
-> = ({ loading, data, error, fetchMore, buttonClassName = "", children }) => {
+const TMDBPaginated: FC<PropsWithChildren<TMDBPaginatedProps>> = ({
+  loading,
+  data,
+  error,
+  fetchMore,
+  buttonClassName = "",
+  dataCyLoading = "tmdbpaginated-loading",
+  dataCyError = "tmdbpaginated-error",
+  children,
+}) => {
   return (
     <>
       {loading !== "init" && data && children}
       <div className="flex items-center justify-center mx-auto mt-3">
         {loading !== "idle" ? (
-          <LoadingIndicator dataCy="people-media-loading" />
+          <LoadingIndicator dataCy={dataCyLoading} />
         ) : error ? (
-          <p data-cy="people-media-error" className="error">
+          <p data-cy={dataCyError} className="error">
             {error}
           </p>
         ) : null}
@@ -31,4 +40,4 @@ const TMDBPaginatedComponent: FC<
   );
 };
 
-export default TMDBPaginatedComponent;
+export default TMDBPaginated;
