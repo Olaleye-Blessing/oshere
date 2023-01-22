@@ -7,6 +7,8 @@ jest.mock("next-auth/react", () => ({
   }),
 }));
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 describe("Navbar", () => {
   it("renders", () => {
     const { getByTestId } = render(<Navbar />);
