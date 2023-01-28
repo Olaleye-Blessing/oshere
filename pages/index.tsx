@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <>
-      <main data-cy="homepage" className="overflow-x-hidden md:pt-4">
+      <main data-cy="home-page" className="overflow-x-hidden md:pt-4">
         <header>
           <MediaNav pageCategory={category} />
 
