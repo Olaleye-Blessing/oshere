@@ -1,4 +1,4 @@
-name: Component Tests
+name: Tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  units:
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,3 +23,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
       - run: yarn test
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          build: yarn build
+          start: yarn start
