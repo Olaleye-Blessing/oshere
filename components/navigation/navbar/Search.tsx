@@ -18,6 +18,7 @@ const Search: FC<SearchProps> = ({ className }) => {
     >
       <div className="navbar__search--cont">
         <input
+          role="search"
           type="search"
           name="name"
           id="name"
