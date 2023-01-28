@@ -38,7 +38,7 @@ export default function Home() {
           movie, popular series, trending series, active communities.
         </title>
       </Head>
-      <main data-cy="homepage" className="overflow-x-hidden md:pt-4">
+      <main data-cy="home-page" className="overflow-x-hidden md:pt-4">
         <header>
           <MediaNav pageCategory={category} />
 
