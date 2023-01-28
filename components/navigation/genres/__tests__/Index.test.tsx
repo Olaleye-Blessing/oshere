@@ -2,11 +2,9 @@ import { render, screen } from "@testing-library/react";
 import Genres, {
   Props as GenresProps,
 } from "@/components/navigation/genres/Index";
+import localGenres from "@/cypress/fixtures/genres.json";
 
-const genres = [
-  { id: 1, name: "Action" },
-  { id: 2, name: "Adventure" },
-];
+const { genres } = JSON.parse(JSON.stringify(localGenres));
 
 const props: GenresProps = {
   category: "movies",
