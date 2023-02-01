@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import SearchForm from "@/components/navigation/navbar/Search";
 import { useTMDBPagination } from "@/hooks/useTMDBPagination";
@@ -20,6 +21,14 @@ const Search: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Search Result for {query.q}</title>
+        <meta
+          name="description"
+          content="Search the Oshere database for movies, tv shows, and more."
+          key="description"
+        />
+      </Head>
       <div className="px-2 md:pt-3 md:px-4">
         <header className="md:mb-6">
           {query.q && (
