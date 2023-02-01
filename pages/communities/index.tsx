@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
+import Head from "next/head";
 import { getDocuments } from "@/lib/firebase/general";
 import { Fetching } from "@/interfaces/fetch";
 import Communities, { Community } from "@/components/communities/Index";
@@ -42,6 +43,14 @@ const Index: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Oshere | Communities</title>
+        <meta
+          name="description"
+          content="Browse through communities"
+          key="description"
+        />
+      </Head>
       <main>
         <h1 className="mb-6">Communities</h1>
         {communities.loading ? (
