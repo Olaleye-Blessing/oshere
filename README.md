@@ -1,12 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# OSHERE
+
+<p>Home of Tv-Series, movies, people and communities!</p>
+<p>Created with nextjs, firebase, nextauth, and tailwindcss.</p>
+
+## How I Worked On This Project
+
+<p>My goal was to simulate a professional environment</p>
+
+- I got my inspiration from this [dribble design](https://dribbble.com/shots/15558638-Movie-Dashboard-Design-Dark-Mode)
+- I used feature branches and [pull requests](https://github.com/Olaleye-Blessing/oshere/pulls?q=is%3Apr+is%3Aclosed)
+
+## Why I Built This Project
+
+- This is a project I built to learn about testing, and I'm glad I did. I learned a lot about testing and how to write tests. I also learned about how to setup Github actions and how to use them to run tests.
+- I also learned more about Nextjs, Tailwindcss, and Firebase.
+
+## How To Navigate This Project
+
+- The project is divided into different folders
+- lib folder contains all the helper functions
+- pages folder contains all the pages
+- config folder contains all the configuration files
+- modules folder contains all the modules, i.e combination of components
+
+<!-- ### Short application
+
+![Gif showing muvus little application](https://raw.githubusercontent.com/Olaleye-Blessing/muvus/master/assests/gif/muvus.gif) -->
+
+## Installation steps
+
+1. Fork the project
+
+2. Clone the project by running
+   ```sh
+   git clone https://github.com/<your-github-username>/oshere.git
+   ```
+3. Go into the project directory
+   ```sh
+   cd oshere
+   ```
+4. Create an `.env` file from the `.env.example` file (copy everything in the `.env.template` file and put it in the `.env` file with appropriate values).
+
+   - `NEXTAUTH_SECRET` Just pass any `random string` or you can quickly create a good value on the command line via this `openssl command`.
+
+   ```sh
+   openssl rand -base64 32
+   ```
+
+   - `NEXTAUTH_URL` This is the url of your application. If you are running the application locally, it will be `http://localhost:3000`. If you are running the application on a server, it will be the url of your server.
+
+5. Go to the [firebase console](https://console.firebase.google.com/) and create a new project. Then, go to the project settings and copy the firebase config object and paste it in the `.env` file.
+
+   ```ts
+   const config = {
+     apiKey: process.env.YOUR_API_KEY,
+     authDomain: process.env.YOUR_AUTH_DOMAIN,
+     projectId: process.env.YOUR_PROJECT_ID,
+     storageBucket: process.env.YOUR_STORAGE_BUCKET,
+     messagingSenderId: process.env.YOUR_MESSAGING_SENDER_ID,
+     appId: process.env.YOUR_APP_ID,
+   };
+   ```
+
+6. Install all the dependencies
+   ```sh
+   yarn
+   ```
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
