@@ -64,7 +64,7 @@ export const TMDBPaginationReducer = <DataType,>(
         },
       };
     case "RESET":
-      return { ...initialState };
+      return { ...initialState, loading: "init" };
 
     default:
       throw new Error(`Unhandled action type`);
