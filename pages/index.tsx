@@ -7,6 +7,7 @@ import GenreMedias from "@/modules/pages/home/GenreMedias";
 import { Category } from "@/interfaces/common";
 import { useTMDB } from "@/hooks/useTMDB";
 import GeneralMedias from "@/modules/pages/home/GeneralMedias";
+import NowPlaying from "@/modules/pages/home/NowPlaying";
 
 interface Genre {
   id: number;
@@ -42,6 +43,8 @@ export default function Home() {
             genres={genresData?.genres || []}
             genre={genre}
           />
+
+          <NowPlaying category={category} />
         </header>
         {genre ? (
           <section className="">

@@ -144,8 +144,22 @@
     @apply right-0 w-full;
   }
 
+  /* slider/carousel */
+  .media__slider
+    .splide__track.splide__track--slide.splide__track--ltr.splide__track--draggable {
+    @apply h-full;
+  }
+
   /* errors */
   .error {
     @apply text-red;
+  }
+}
+
+@layer utilities {
+  .line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
 }
