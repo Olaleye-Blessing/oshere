@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import { useCommunityContext } from "@/hooks/useCommunityContext";
@@ -13,8 +13,11 @@ const Messages: FC = () => {
   const { data } = useSession();
   const { user } = data as AuthUser;
   const { messages, info, dispatch } = useCommunityContext();
+  const lastMessageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     if (!info.data) return;
 
     const messagesRef = getCommunityMessagesRef(info.data.id);
@@ -35,9 +38,22 @@ const Messages: FC = () => {
           data: (messages as Array<any>).reverse(),
         },
       });
+
+      // wait for the messages to render before scrolling.
+      // this is a hacky solution to scroll to the bottom of the messages
+      timeoutId = setTimeout(() => {
+        lastMessageRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      }, 10);
     });
 
-    return unsubscribe;
+    return () => {
+      clearTimeout(timeoutId);
+      unsubscribe();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [info.data]);
 
@@ -46,7 +62,7 @@ const Messages: FC = () => {
   if (messages.error) return <p className="error">{messages.error}</p>;
 
   return (
-    <ul className="px-2 overflow-y-auto">
+    <ul data-type="messages" className="px-2 overflow-y-auto relative">
       {messages.data?.map((message, index) => {
         const date = new Date(
           (message.createdAt as ReceivedDate).seconds * 1000
@@ -78,6 +94,7 @@ const Messages: FC = () => {
           </li>
         );
       })}
+      <div ref={lastMessageRef} className="h-[0.1px] w-full"></div>
     </ul>
   );
 };
