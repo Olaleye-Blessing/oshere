@@ -21,13 +21,13 @@ const Chat: FC<Props> = () => {
     if (!value) return;
 
     try {
+      setMessage("");
+
       await createCommunityMessage(ref, {
         from: user.name,
         value,
         createdAt: new Date(),
       });
-
-      setMessage("");
     } catch (error) {
       console.warn(error);
     }
@@ -43,6 +43,9 @@ const Chat: FC<Props> = () => {
           className="block w-full rounded-md shadow-sm focus:border-red-primary focus:border-opacity-20 focus:ring-red-primary focus:ring-opacity-20 bg-black-2 sm:text-sm resize-y"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyUp={(e) => {
+            if (!e.shiftKey && e.key === "Enter") handleSendMessage();
+          }}
         />
         <button
           className="absolute bottom-2 right-2 bg-opacity-40 bg-red-primary rounded-lg pt-[0.15rem] pb-1 px-3 text-sm"
