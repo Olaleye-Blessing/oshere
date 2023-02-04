@@ -25,8 +25,7 @@
   }
 
   body {
-    @apply bg-black-primary text-white-primary;
-    @apply overflow-x-hidden;
+    @apply bg-black-primary text-white-primary overflow-x-hidden font-light;
   }
 
   main {
