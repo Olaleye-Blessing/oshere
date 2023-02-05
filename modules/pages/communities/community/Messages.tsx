@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import { useCommunityContext } from "@/hooks/useCommunityContext";
 import {
@@ -8,6 +9,27 @@ import {
 } from "@/lib/firebase/communities";
 import { AuthUser } from "@/interfaces/common";
 import { ReceivedDate, SentDate } from "@/interfaces/community";
+
+const list = {
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.01,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+    },
+  },
+};
+
+const item = {
+  visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
+  hidden: { opacity: 0, y: 10, transition: { duration: 0.25 } },
+};
 
 const Messages: FC = () => {
   const { data } = useSession();
@@ -62,14 +84,28 @@ const Messages: FC = () => {
   if (messages.error) return <p className="error">{messages.error}</p>;
 
   return (
-    <ul data-type="messages" className="px-2 overflow-y-auto relative">
+    <motion.ul
+      initial="hidden"
+      animate="visible"
+      variants={list}
+      data-type="messages"
+      className="px-2 overflow-y-auto relative overflow-x-hidden"
+    >
       {messages.data?.map((message, index) => {
         const date = new Date(
           (message.createdAt as ReceivedDate).seconds * 1000
         );
 
         return (
-          <li
+          <motion.li
+            variants={{
+              ...item,
+              visible: { ...item.visible, x: 0 },
+              hidden: {
+                ...item.hidden,
+                x: user.name === message.from ? -15 : 15,
+              },
+            }}
             key={index}
             className={`flex items-start justify-start w-[90%] max-w-md mb-5 ${
               user.name === message.from ? "ml-auto" : "mr-auto"
@@ -91,11 +127,11 @@ const Messages: FC = () => {
                 <span>{date.toTimeString().split(" ")[0]}</span>
               </time>
             </div>
-          </li>
+          </motion.li>
         );
       })}
       <div ref={lastMessageRef} className="h-[0.1px] w-full"></div>
-    </ul>
+    </motion.ul>
   );
 };
 
