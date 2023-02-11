@@ -31,3 +31,6 @@ jobs:
         with:
           build: yarn build
           start: yarn start
+        env:
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: http://localhost:3000
