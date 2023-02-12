@@ -55,7 +55,7 @@ export const CommunityProvider: FC<PropsWithChildren> = ({ children }) => {
           type: "FETCH_FAILURE",
           payload: {
             key: "info",
-            error: "No such document!",
+            error: "This community does not exist.",
           },
         });
 
