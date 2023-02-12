@@ -15,14 +15,11 @@ export const useTMDB = <ResponseType>(url: string, page?: number) => {
     isLoading: loading,
   } = useSWR<ResponseType, TMDBError>(url ? fetchUrl.toString() : null);
 
-  let errMessage: string | undefined;
-
-  if (error) {
-    errMessage =
-      error.status_code === 7
-        ? "Resources not available"
-        : error.status_message;
-  }
+  let errMessage = error
+    ? error.status_code === 7
+      ? "Resources not available"
+      : error.status_message
+    : undefined;
 
   return {
     data,
