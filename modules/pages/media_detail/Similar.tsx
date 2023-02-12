@@ -20,6 +20,9 @@ const Similar: FC<SimilarProps> = ({ category, mediaId }) => {
   return (
     <aside className="aside">
       <h3 className="capitalize xl:mb-1">Similar {category}</h3>
+      {state.loading === "idle" && data?.results.length === 0 && (
+        <p>No similar {category} found. </p>
+      )}
       <TMDBPaginated {...state}>
         <MainMedias
           medias={data.results as (TvShow | Movie)[]}
