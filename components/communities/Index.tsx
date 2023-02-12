@@ -20,7 +20,7 @@ const Index: FC<CommunitiesProps> = ({ communities }) => {
   return (
     <ul className="communties">
       {communities.map((community) => (
-        <li key={community.id} className="w-full">
+        <li key={community.id} className="w-full lg:max-w-[20.375rem]">
           <Link
             href={`/communities/${community.category}/${community.id}`}
             className="flex flex-col w-full h-full pb-12 transition-all duration-200 ease-in-out rounded-lg overflow-hidden bg-black bg-opacity-20 shadow-lg ring-white-primary ring-opacity-10 ring-1 hover:shadow-lg hover:bg-opacity-40 focus:ring-red-primary focus:ring-opacity-20 hover:scale-[1.03] focus:scale-[1.03]"
