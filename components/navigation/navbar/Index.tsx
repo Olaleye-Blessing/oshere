@@ -13,13 +13,13 @@ const Index = () => {
   const toggleNav = () => {
     const navListsCont: HTMLDivElement = navLists.current!;
 
-    navListsCont.classList.toggle("h-[calc(100vh-4rem)]");
+    navListsCont.classList.toggle("h-[calc(100vh-3.7rem)]");
   };
 
   useEffect(() => {
     const navListsCont: HTMLDivElement = navLists.current!;
 
-    navListsCont.classList.remove("h-[calc(100vh-4rem)]");
+    navListsCont.classList.remove("h-[calc(100vh-3.7rem)]");
   }, [pathname]);
 
   return (
@@ -37,8 +37,10 @@ const Index = () => {
         ref={navLists}
         className="navbar__list--cont"
       >
-        <Pages />
-        <Auth />
+        <ul className="mt-4">
+          <Pages />
+          <Auth />
+        </ul>
         <Search />
       </div>
     </nav>
