@@ -1,23 +1,28 @@
 # OSHERE
 
-<p>Home of Tv-Series, movies, people and communities!</p>
-<p>Created with nextjs, firebase, nextauth, and tailwindcss.</p>
+Home of Tv-Series, movies, people and communities!
+
+Created with nextjs, firebase, nextauth, and tailwindcss.
+
+[Live site](https://oshere.blessingolaleye.xyz/) || [Latest release](https://oshere-git-staging-olaleye-blessing.vercel.app/)
 
 ## How I Worked On This Project
 
-<p>My goal was to simulate a professional environment</p>
+My goal was to simulate a professional environment.
 
 - I got my inspiration from this [dribble design](https://dribbble.com/shots/15558638-Movie-Dashboard-Design-Dark-Mode)
 - I used feature branches and [pull requests](https://github.com/Olaleye-Blessing/oshere/pulls?q=is%3Apr+is%3Aclosed)
 
 ## Why I Built This Project
 
-- This is a project I built to learn about testing, and I'm glad I did. I learned a lot about testing and how to write tests. I also learned about how to setup Github actions and how to use them to run tests.
+- This is a project I built to learn about testing, and I'm glad I did. I learned a lot about testing and how to write tests.
+- I also learned about how to setup Github actions and how to use them to run tests.
 - I also learned more about Nextjs, Tailwindcss, and Firebase.
 
 ## How To Navigate This Project
 
-- The project is divided into different folders
+The project is divided into different folders
+
 - lib folder contains all the helper functions
 - pages folder contains all the pages
 - config folder contains all the configuration files
