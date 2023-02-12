@@ -1,3 +1,5 @@
+import { signIn, signOut } from "next-auth/react";
+import { Session } from "next-auth";
 import {
   HomeIcon as HomeIconOutline,
   AcademicCapIcon as CommunitiesIconOutline,
@@ -10,6 +12,18 @@ import {
   TvIcon as TvIconSolid,
   FilmIcon as MoviesIconSolid,
 } from "@heroicons/react/24/solid";
+import { UserIcon as UserIconSolid } from "@heroicons/react/24/solid";
+import { UserIcon as UserIconOutline } from "@heroicons/react/24/outline";
+import {
+  ArrowRightOnRectangleIcon,
+  ArrowLeftOnRectangleIcon,
+} from "@heroicons/react/24/outline";
+import { Props as PageProp } from "./Page";
+
+export interface List {
+  header: string;
+  pages: PageProp[];
+}
 
 export const generalPages = [
   {
@@ -50,3 +64,28 @@ export const categoryPages = [
     ],
   },
 ];
+
+const authenticatedPages: List["pages"] = [
+  {
+    label: "Profile",
+    icon: UserIconOutline,
+    activeIcon: UserIconSolid,
+    path: "/profile",
+  },
+  {
+    label: "Sign out",
+    onClick: signOut,
+    icon: ArrowLeftOnRectangleIcon,
+  },
+];
+
+const unauthenticatedPages: List["pages"] = [
+  {
+    label: "Sign in",
+    onClick: signIn,
+    icon: ArrowRightOnRectangleIcon,
+  },
+];
+
+export const getUserPages = (authenticated: Session | null) =>
+  authenticated ? authenticatedPages : unauthenticatedPages;
