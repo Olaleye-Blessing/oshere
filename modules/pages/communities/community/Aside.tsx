@@ -46,6 +46,8 @@ const Aside = () => {
     };
   }, []);
 
+  console.log(communities);
+
   return (
     <aside className="community__aside py-5">
       {communities.loading ? (
@@ -54,21 +56,26 @@ const Aside = () => {
         <p className="error">{communities.error}</p>
       ) : (
         <ul className="flex items-center justify-center flex-col overflow-y-auto">
-          {communities.data.map((group, index) => (
-            <li key={index} className="max-w-max mx-auto px-2 mb-5">
-              <Link href="/communities" className="block">
-                <figure className="flex items-center justify-center rounded-[50%]">
-                  <Image
-                    src={`${TMDB_IMAGE_BASE_URL}/original${group.coverPhoto}`}
-                    alt=""
-                    width={500}
-                    height={500}
-                    className="w-[3rem] h-[3rem] rounded-[50%]"
-                  />
-                </figure>
-              </Link>
-            </li>
-          ))}
+          {communities.data.map((group, index) => {
+            const [category, id] = group.id.split("-");
+            console.log({ category, id });
+
+            return (
+              <li key={index} className="max-w-max mx-auto px-2 mb-5">
+                <Link href={`/communities/${category}/${id}`} className="block">
+                  <figure className="flex items-center justify-center rounded-[50%]">
+                    <Image
+                      src={`${TMDB_IMAGE_BASE_URL}/original${group.coverPhoto}`}
+                      alt=""
+                      width={500}
+                      height={500}
+                      className="w-[3rem] h-[3rem] rounded-[50%]"
+                    />
+                  </figure>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </aside>
