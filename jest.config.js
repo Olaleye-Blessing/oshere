@@ -11,9 +11,11 @@ const customJestConfig = {
   moduleNameMapper: {
     "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/configs/(.*)$": "<rootDir>/configs/$1",
-    "^@/cypress/(.*)$": "<rootDir>/cypress/$1",
+    "^@/contexts/(.*)$": "<rootDir>/contexts/$1",
     "^@/hooks/(.*)$": "<rootDir>/hooks/$1",
     "^@/interfaces/(.*)$": "<rootDir>/interfaces/$1",
+    "^@/modules/(.*)$": "<rootDir>/modules/$1",
+    "^@/lib/(.*)$": "<rootDir>/lib/$1",
     "^@/modules/(.*)$": "<rootDir>/modules/$1",
     "^@/reducers/(.*)$": "<rootDir>/reducers/$1",
     "^@/utils/(.*)$": "<rootDir>/utils/$1",
