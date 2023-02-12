@@ -12,6 +12,8 @@ export interface CreateCommunityProps {
   id: number;
   name: string;
   poster_path: string;
+  useText?: boolean;
+  className?: string;
 }
 
 const CreateCommunity: FC<CreateCommunityProps> = (props) => {
@@ -47,14 +49,20 @@ const CreateCommunity: FC<CreateCommunityProps> = (props) => {
 
   return (
     <button
-      className="text-red-primary hover:text-white-primary focus:outline focus:outline-white"
+      className={`text-red-primary hover:text-white-primary focus:outline focus:outline-white ${
+        props.className || ""
+      }`}
       onClick={async (e) => {
         e.preventDefault();
         e.stopPropagation();
         await handleCreateCommunity();
       }}
     >
-      <UserGroupIcon className="w-4 h-4" />
+      {props.useText ? (
+        "Create Community"
+      ) : (
+        <UserGroupIcon className="w-4 h-4" />
+      )}
     </button>
   );
 };

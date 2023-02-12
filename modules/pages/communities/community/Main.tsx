@@ -20,7 +20,11 @@ const Main: FC = () => {
         ) : info.loading ? (
           <LoadingIndicator />
         ) : (
-          <p className="error">{info.error || "Something went wrong"}</p>
+          <div className="flex flex-col items-center justify-center h-full">
+            <p className="error text-red-primary">
+              {info.error || "Something went wrong"}
+            </p>
+          </div>
         )}
       </main>
     </>
