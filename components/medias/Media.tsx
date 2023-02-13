@@ -5,6 +5,8 @@ import { MediasProps } from "./Main";
 import { Movie, TvShow } from "@/interfaces/common";
 import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
 import CreateCommunity from "@/components/buttons/CreateCommunity";
+import BookmarkMedia from "@/components/buttons/BookmarkMedia";
+import Action from "./Action";
 
 interface MediaProps extends Pick<MediasProps, "category"> {
   media: TvShow | Movie;
@@ -32,7 +34,7 @@ const Media: FC<MediaProps> = ({
             className="h-full object-cover"
           />
         </figure>
-        <div className="px-3">
+        <div className="px-3 mb-5">
           <p className="truncate text-white-primary text-opacity-50 my-2">
             {media.overview}
           </p>
@@ -42,13 +44,7 @@ const Media: FC<MediaProps> = ({
               : (media as Movie).title}
           </h4>
         </div>
-        <div className="px-3 mt-auto">
-          <CreateCommunity
-            category={category}
-            {...media}
-            name={(media as TvShow).name || (media as Movie).title}
-          />
-        </div>
+        <Action category={category} media={media} />
       </Link>
     </li>
   );
