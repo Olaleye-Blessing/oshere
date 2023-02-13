@@ -12,6 +12,7 @@ const customJestConfig = {
     "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/configs/(.*)$": "<rootDir>/configs/$1",
     "^@/contexts/(.*)$": "<rootDir>/contexts/$1",
+    "^@/cypress/(.*)$": "<rootDir>/cypress/$1",
     "^@/hooks/(.*)$": "<rootDir>/hooks/$1",
     "^@/interfaces/(.*)$": "<rootDir>/interfaces/$1",
     "^@/modules/(.*)$": "<rootDir>/modules/$1",
