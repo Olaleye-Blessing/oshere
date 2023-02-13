@@ -30,16 +30,23 @@ const MediaDetail: NextPage = () => {
           key="description"
         />
       </Head>
-      <main className="relative h-[calc(100vh-8rem)] px-0 md:h-auto md:overflow-x-hidden xl:pt-0">
+      <main
+        data-cy={`media-info-${category}-page`}
+        className="relative h-[calc(100vh-8rem)] px-0 md:h-auto md:overflow-x-hidden xl:pt-0"
+      >
         {loading ? (
           <LoadingIndicator />
         ) : data ? (
           <Detail media={data} category={category as Category} />
         ) : (
-          <p className="error">{error || "unknown"}</p>
+          <p data-cy="error" className="error">
+            {error || "unknown"}
+          </p>
         )}
       </main>
-      <SimilarMedias category={category as Category} mediaId={id as string} />
+      {!loading && !error && (
+        <SimilarMedias category={category as Category} mediaId={id as string} />
+      )}
     </>
   );
 };

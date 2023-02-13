@@ -39,7 +39,11 @@ const Index: FC<Props> = ({ media, category }) => {
             </p>
             <ul className="flex items-center justify-start flex-wrap">
               {media.genres.map((genre) => (
-                <li key={genre.id} className="mr-3 last:mr-0 mb-2">
+                <li
+                  data-cy={`genre-${genre.id}`}
+                  key={genre.id}
+                  className="mr-3 last:mr-0 mb-2"
+                >
                   <Link
                     href={`/?category=${category}&genre=${genre.id}`}
                     className="block px-3 pt-1 pb-2 text-sm font-semibold bg-red-primary bg-opacity-10 text-red-primary rounded-md"

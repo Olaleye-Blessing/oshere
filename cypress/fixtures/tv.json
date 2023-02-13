@@ -1,0 +1,86 @@
+{
+  "adult": false,
+  "backdrop_path": "/3FLHePl9Y3n4BidLVjIA9qSRDOE.jpg",
+  "created_by": [],
+  "episode_run_time": [],
+  "first_air_date": "2021-08-03",
+  "genres": [{ "id": 10766, "name": "Soap" }],
+  "homepage": "https://www.zee5.com/global/tv-shows/details/bhagya-lakshmi/0-6-3392",
+  "id": 130542,
+  "in_production": true,
+  "languages": ["hi"],
+  "last_air_date": "2023-02-12",
+  "last_episode_to_air": {
+    "air_date": "2023-02-12",
+    "episode_number": 487,
+    "id": 4222413,
+    "name": "Episode 487",
+    "overview": "",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 130542,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  "name": "Bhagya Lakshmi",
+  "next_episode_to_air": {
+    "air_date": "2023-02-13",
+    "episode_number": 488,
+    "id": 4222414,
+    "name": "Episode 488",
+    "overview": "",
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 130542,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  "networks": [
+    {
+      "id": 2590,
+      "name": "ZEE5",
+      "logo_path": "/cakduIXxOWnOasbKSMZ6Xvw5REG.png",
+      "origin_country": "IN"
+    },
+    {
+      "id": 5370,
+      "name": "Zee Alwan",
+      "logo_path": "/RlFwcvtmKITv83XXAoOtoD6gfB.png",
+      "origin_country": "SA"
+    }
+  ],
+  "number_of_episodes": 490,
+  "number_of_seasons": 1,
+  "origin_country": ["IN"],
+  "original_language": "hi",
+  "original_name": "Bhagya Lakshmi",
+  "overview": "Hailing from a middle-class family, Lakshmi’s life is upended when she realises that her marriage to Rishi Oberoi, an industrialist’s son, is a sham to keep his death at bay.",
+  "popularity": 2978.116,
+  "poster_path": "/7wuKrFvbX7kAIF0ctotARsqayPo.jpg",
+  "production_companies": [],
+  "production_countries": [{ "iso_3166_1": "IN", "name": "India" }],
+  "seasons": [
+    {
+      "air_date": "2021-08-03",
+      "episode_count": 490,
+      "id": 204689,
+      "name": "Season 1",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 1
+    }
+  ],
+  "spoken_languages": [
+    { "english_name": "Hindi", "iso_639_1": "hi", "name": "हिन्दी" }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 5.158,
+  "vote_count": 19,
+  "videos": { "results": [] }
+}
