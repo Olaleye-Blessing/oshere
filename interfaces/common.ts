@@ -109,3 +109,11 @@ export interface AuthUser {
     image: string;
   };
 }
+
+export interface Bookmark extends Movie, TvShow {
+  name: string;
+  id: number;
+  category: Category;
+  description: string;
+  poster_path: string;
+}

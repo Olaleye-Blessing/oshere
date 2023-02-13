@@ -19,7 +19,7 @@ const Action: FC<Props> = ({ category, media }) => {
           name,
           id: media.id,
           category,
-          description: media.overview,
+          overview: media.overview,
           poster_path: media.poster_path,
         }}
       />
