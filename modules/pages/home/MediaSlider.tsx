@@ -6,6 +6,7 @@ import Image from "next/image";
 import { TMDB_IMAGE_BASE_URL } from "@/configs/paths";
 import CreateCommunity from "@/components/buttons/CreateCommunity";
 import Link from "next/link";
+import Action from "@/components/medias/Action";
 
 interface Props {
   medias: (TvShow | Movie)[];
@@ -81,14 +82,7 @@ const MediaSlider: FC<Props> = ({ category, medias }) => {
                   {media.overview}
                 </p>
 
-                <div className="mt-2">
-                  <CreateCommunity
-                    category={category}
-                    name={(media as any).name || (media as any).title}
-                    id={media.id}
-                    poster_path={media.poster_path}
-                  />
-                </div>
+                <Action category={category} media={media} />
               </div>
             </Link>
           </SplideSlide>
