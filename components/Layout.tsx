@@ -11,7 +11,7 @@ const inter = Inter({
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
 
-  const twoColumnLayout = ["/communities", "/search"];
+  const twoColumnLayout = ["/communities", "/search", "/bookmarks"];
 
   return (
     <div className={`${inter.variable} font-sans`}>

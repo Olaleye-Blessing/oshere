@@ -10,7 +10,7 @@ export interface Props {
     name: string;
     id: number;
     category: Category;
-    description: string;
+    overview: string;
     poster_path: string;
   };
 }

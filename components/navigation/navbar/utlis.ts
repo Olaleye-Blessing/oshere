@@ -18,6 +18,8 @@ import {
   ArrowRightOnRectangleIcon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
+import { BookmarkIcon as BookmarkOutline } from "@heroicons/react/24/outline";
+import { BookmarkIcon as BookmarkSolid } from "@heroicons/react/24/solid";
 import { Props as PageProp } from "./Page";
 
 export interface List {
@@ -87,5 +89,34 @@ const unauthenticatedPages: List["pages"] = [
   },
 ];
 
-export const getUserPages = (authenticated: Session | null) =>
-  authenticated ? authenticatedPages : unauthenticatedPages;
+export const libraryPages = {
+  header: "LIBRARY",
+  pages: [
+    {
+      label: "Bookmarks",
+      icon: BookmarkOutline,
+      activeIcon: BookmarkSolid,
+      path: "/bookmarks",
+    },
+  ],
+};
+
+export const getUserPages = (authenticated: Session | null) => {
+  if (authenticated) {
+    let pages = [
+      libraryPages,
+      {
+        header: "General",
+        pages: authenticatedPages,
+      },
+    ];
+    return pages;
+  }
+
+  return [
+    {
+      header: "General",
+      pages: unauthenticatedPages,
+    },
+  ];
+};

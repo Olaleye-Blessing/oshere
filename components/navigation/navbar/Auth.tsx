@@ -4,25 +4,39 @@ import LoadingIndicator from "@/components/LoadingIndicator";
 import { getUserPages } from "./utlis";
 import Page from "./Page";
 
-const header = "General";
+type DataTestIds = {
+  [key: string]: string;
+};
+
+const dataTestIds: DataTestIds = {
+  General: "nav-auth",
+};
 
 const Auth: FC = () => {
   const { data, status } = useSession();
 
   return (
     <>
-      <li key={header} data-testid="nav-auth" className="mb-5 md:mb-10">
-        <h5 className="mb-1 font-medium">{header}</h5>
-        {status === "loading" ? (
-          <LoadingIndicator className="ml-0" />
-        ) : (
-          <ul>
-            {getUserPages(data).map((page) => {
-              return <Page key={page.label} {...page} />;
-            })}
-          </ul>
-        )}
-      </li>
+      {getUserPages(data).map(({ header, pages }) => {
+        return (
+          <li
+            data-testid={dataTestIds[header]}
+            key={header}
+            className="mb-5 md:mb-10"
+          >
+            <h5 className="mb-1 font-medium">{header}</h5>
+            {status === "loading" ? (
+              <LoadingIndicator className="ml-0" />
+            ) : (
+              <ul>
+                {pages.map((page) => {
+                  return <Page key={page.label} {...page} />;
+                })}
+              </ul>
+            )}
+          </li>
+        );
+      })}
     </>
   );
 };
