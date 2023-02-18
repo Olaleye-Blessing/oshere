@@ -2,10 +2,6 @@ import { TMDB_BASE_URL } from "@/configs/paths";
 
 describe("Home page", () => {
   beforeEach(() => {
-    cy.intercept("GET", `${TMDB_BASE_URL}/person/popular*`, {
-      fixture: "people.json",
-    }).as("getPopularPeople");
-
     cy.intercept("GET", `${TMDB_BASE_URL}/tv/**`, {
       fixture: "tvs.json",
     }).as("tvShows");
@@ -21,7 +17,7 @@ describe("Home page", () => {
     cy.visit("/");
 
     // these two occur no matter which media type is selected
-    cy.wait(["@getPopularPeople", "@genres"]);
+    cy.wait(["@genres"]);
   });
 
   it("renders home page", () => {

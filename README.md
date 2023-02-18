@@ -1,6 +1,6 @@
 # OSHERE
 
-Home of Tv-Series, movies, people and communities!
+Home of Tv-Series, movies, and communities!
 
 Created with nextjs, firebase, nextauth, and tailwindcss.
 
