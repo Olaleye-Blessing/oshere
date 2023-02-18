@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 import MediaNav from "@/components/navigation/media/Index";
 import GenresNav from "@/components/navigation/genres/Index";
-import Aside from "@/modules/pages/home/Aside";
 import GenreMedias from "@/modules/pages/home/GenreMedias";
 import { Category } from "@/interfaces/common";
 import { useTMDB } from "@/hooks/useTMDB";
@@ -34,8 +33,8 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Oshere | browse movies, tv series, people, popular movies, trending
-          movie, popular series, trending series, active communities.
+          Oshere | browse movies, tv series, popular movies, trending movie,
+          popular series, trending series, active communities.
         </title>
       </Head>
       <main data-cy="home-page" className="overflow-x-hidden md:pt-4">
@@ -67,7 +66,6 @@ export default function Home() {
           <GeneralMedias category={category} />
         )}
       </main>
-      <Aside />
     </>
   );
 }

@@ -82,7 +82,7 @@
   }
 
   .layout__two {
-    @apply md:grid md:grid-cols-[12rem_1fr] xl:grid-cols-[15rem_1fr];
+    @apply md:flex md:items-start md:justify-start;
   }
 
   /* navigations */

@@ -25,7 +25,7 @@ const Aside = () => {
         type: "FETCH_SUCCESS",
         payload: {
           key: "communities",
-          data: data.communities,
+          data: data.communities || [],
         },
       });
     });

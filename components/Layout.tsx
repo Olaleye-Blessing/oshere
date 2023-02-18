@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { Inter } from "@next/font/google";
 import Navbar from "@/components/navigation/navbar/Index";
 
@@ -9,15 +9,22 @@ const inter = Inter({
 });
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const pathname = usePathname();
+  const { pathname } = useRouter();
+  console.log({ pathname });
 
-  const twoColumnLayout = ["/communities", "/search", "/bookmarks"];
+  const twoColumnLayout = [
+    "/",
+    "/communities",
+    "/search",
+    "/bookmarks",
+    "/communities/[category]/[id]",
+  ];
 
   return (
     <div className={`${inter.variable} font-sans`}>
       <div
         className={
-          twoColumnLayout.some((path) => String(pathname).includes(path))
+          pathname && twoColumnLayout.includes(pathname)
             ? "layout__two"
             : "layout__three"
         }

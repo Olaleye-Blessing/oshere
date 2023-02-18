@@ -27,19 +27,19 @@ export default function Document() {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="keywords"
-          content="browse movies, tv series, people, popular movies, trending movie, popular series, trending series, active communities"
+          content="browse movies, tv series, popular movies, trending movie, popular series, trending series, active communities"
           key="keywords"
         />
         <meta
           name="description"
-          content="browse oshere series, movies, people, community of people and more"
+          content="browse oshere series, movies, community of people and more"
           key="description"
         />
         <meta name="theme-color" content="#ff0a78" />
         <meta name="robots" content="index,follow" />
         <meta
           name="subject"
-          content="browse oshere series, movies, people, community of people and more"
+          content="browse oshere series, movies, community of people and more"
         />
       </Head>
       <body>
