@@ -49,6 +49,7 @@ const BookmarkMedia: FC<Props> = (props) => {
       }}
       className="text-red-primary"
     >
+      <span className="sr-only">Bookmark {props.bookmark.name}</span>
       <BookmarkIcon className="w-5 h-5" />
     </button>
   );
