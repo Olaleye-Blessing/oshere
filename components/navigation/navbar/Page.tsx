@@ -55,16 +55,16 @@ const Page: FC<Props> = (page) => {
   }
 
   return (
-    <li key={page.label} className="mb-2 md:mb-3">
+    <li key={page.label} className="mb-2 md:mb-4">
       <Tag
         {...props}
         className={`${props.className} ${
           !isButtonProps(page) && activePath(page.path, router)
-            ? "text-red-primary"
-            : "text-white-primary text-opacity-50 hover:text-red-light hover:text-opacity-100"
+            ? "text-red-primary font-semibold"
+            : "text-white-primary hover:text-red-light"
         }`}
       >
-        <span className="inline-block w-4 h-4 mr-[0.375rem] mt-[0.00625rem]">
+        <span className="inline-block w-4 h-4 mr-[0.4rem] mt-[0.00625rem]">
           {isButtonProps(page) ? (
             <page.icon />
           ) : router.pathname === page.path ? (
