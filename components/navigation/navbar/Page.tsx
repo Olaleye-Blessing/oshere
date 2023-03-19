@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { NextRouter, useRouter } from "next/router";
 
 export interface ButtonProps {
   label: string;
@@ -22,8 +22,19 @@ export type Props = (ButtonProps | LinkProps) & PageProps;
 const isButtonProps = (props: ButtonProps | LinkProps): props is ButtonProps =>
   "onClick" in props;
 
+const activePath = (
+  path: string,
+  { pathname: currentPath, query, asPath, isReady }: NextRouter
+) => {
+  if (!isReady) return false;
+
+  if (Object.keys(query).length === 0) return path === currentPath;
+
+  return path !== "/" && asPath.includes(path);
+};
+
 const Page: FC<Props> = (page) => {
-  const pathname = usePathname();
+  const router = useRouter();
 
   const Tag = isButtonProps(page) ? "button" : Link;
 
@@ -48,7 +59,7 @@ const Page: FC<Props> = (page) => {
       <Tag
         {...props}
         className={`${props.className} ${
-          !isButtonProps(page) && pathname === page.path
+          !isButtonProps(page) && activePath(page.path, router)
             ? "text-red-primary"
             : "text-white-primary text-opacity-50 hover:text-red-light hover:text-opacity-100"
         }`}
@@ -56,7 +67,7 @@ const Page: FC<Props> = (page) => {
         <span className="inline-block w-4 h-4 mr-[0.375rem] mt-[0.00625rem]">
           {isButtonProps(page) ? (
             <page.icon />
-          ) : pathname === page.path ? (
+          ) : router.pathname === page.path ? (
             <page.activeIcon />
           ) : (
             <page.icon />
