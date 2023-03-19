@@ -41,10 +41,10 @@ const Index: FC<Props> = ({
               <Link
                 data-cy={`nav__genre--${genre.id}`}
                 href={`/?category=${category}&genre=${genre.id}`}
-                className={`py-1 capitalize font-semibold ${
+                className={`py-1 capitalize ${
                   Number(currentGenre) === genre.id
-                    ? "text-red-primary text-opacity-100"
-                    : "text-white hover:text-red-primary text-opacity-30"
+                    ? "text-red-primary"
+                    : "text-white hover:text-red-primary"
                 }`}
               >
                 {genre.name}
