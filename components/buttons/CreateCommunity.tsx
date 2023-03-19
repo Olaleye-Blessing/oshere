@@ -61,7 +61,10 @@ const CreateCommunity: FC<CreateCommunityProps> = (props) => {
       {props.useText ? (
         "Create Community"
       ) : (
-        <UserGroupIcon className="w-5 h-5" />
+        <>
+          <span className="sr-only">Create {props.name} community</span>
+          <UserGroupIcon className="w-5 h-5" />
+        </>
       )}
     </button>
   );

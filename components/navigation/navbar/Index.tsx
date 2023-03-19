@@ -23,13 +23,20 @@ const Index = () => {
   }, [pathname]);
 
   return (
-    <nav data-testid="navbar" className="navbar">
+    <nav
+      data-testid="navbar"
+      className="navbar"
+      aria-labelledby="mainmenulabel"
+    >
       <HomeLogo />
       <button
         data-cy="navbar__toggle"
         className="w-6 h-6 hover:text-red-primary md:hidden"
         onClick={toggleNav}
       >
+        <span className="sr-only" id="mainmenulabel">
+          Menu
+        </span>
         <Bars3Icon />
       </button>
       <div
