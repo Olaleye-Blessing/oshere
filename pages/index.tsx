@@ -20,6 +20,7 @@ interface GenresResponse {
 export default function Home() {
   const searchParams = useSearchParams();
   const category = (searchParams.get("category") || "tvshows") as Category;
+  const categoryTitle = category === "tvshows" ? "TV Shows" : "Movies";
   const genre = searchParams.get("genre");
   const {
     data: genresData,
@@ -54,7 +55,7 @@ export default function Home() {
         {genre ? (
           <section className="">
             <h1 className="mb-3 text-2xl md:text-4xl">
-              <span className="capitalize">{category}</span>{" "}
+              <span className="capitalize">{categoryTitle}</span>{" "}
               <span className="text-red-primary">/</span>{" "}
               <span className="text-white text-opacity-40">
                 {genresData?.genres.find((g) => g.id === Number(genre))?.name}

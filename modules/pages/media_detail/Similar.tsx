@@ -13,15 +13,16 @@ const Similar: FC<SimilarProps> = ({ category, mediaId }) => {
   let url = category
     ? `${category === "movies" ? "/movie" : "/tv"}/${mediaId}/similar`
     : "";
+  let categoryTitle = category === "tvshows" ? "TV Shows" : "Movies";
 
   const state = useTMDBPagination<Movie | TvShow>(url);
   const { data } = state;
 
   return (
     <aside data-cy="similar" className="aside">
-      <h3 className="capitalize xl:mb-1">Similar {category}</h3>
+      <h3 className="capitalize xl:mb-1">Similar {categoryTitle}</h3>
       {state.loading === "idle" && data?.results.length === 0 && (
-        <p>No similar {category} found. </p>
+        <p>No similar {categoryTitle.toLowerCase()} found. </p>
       )}
       <TMDBPaginated {...state}>
         <MainMedias

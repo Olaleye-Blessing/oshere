@@ -8,17 +8,18 @@ export interface GeneralMediasProps {
 
 const GeneralMedias: FC<GeneralMediasProps> = ({ category }) => {
   let urlCategory = category === "tvshows" ? "tv" : "movie";
+  let mediaTitle = category === "tvshows" ? "TV Shows" : "Movies";
 
   return (
     <>
       <MediasSection
         category={category}
-        title={`Popular ${category}`}
+        title={`Popular ${mediaTitle}`}
         url={`/${urlCategory}/popular`}
       />
       <MediasSection
         category={category}
-        title={`Top Rated ${category}`}
+        title={`Top Rated ${mediaTitle}`}
         url={`/${urlCategory}/top_rated`}
       />
       <MediasSection
