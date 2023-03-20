@@ -39,7 +39,7 @@ const Search: NextPage = () => {
           key="description"
         />
       </Head>
-      <div data-cy="search-page" className="px-2 md:pt-3 md:px-4">
+      <div data-cy="search-page" className="px-2 w-full md:pt-3 md:px-4">
         <header className="md:mb-6">
           {query.q && (
             <h1 className="mt-0 mb-3 mr-3">

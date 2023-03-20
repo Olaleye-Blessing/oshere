@@ -28,7 +28,7 @@ const Similar: FC<SimilarProps> = ({ category, mediaId }) => {
           medias={data.results as (TvShow | Movie)[]}
           category={category}
           ulClassName="mt-3 flex whitespace-nowrap justify-start overflow-x-scroll scrollbar__hide space-x-5 pr-5 sm:space-x-8 xl:flex-col xl:space-x-0 xl:gap-y-5 xl:px-2 xl:overflow-x-hidden xl:scrollbar__show"
-          liClassName="min-w-[15.05rem]"
+          liClassName="min-w-[15.05rem] max-w-none"
         />
       </TMDBPaginated>
     </aside>
