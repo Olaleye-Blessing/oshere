@@ -49,7 +49,7 @@ const CreateCommunity: FC<CreateCommunityProps> = (props) => {
 
   return (
     <button
-      className={`mr-2 text-red-primary hover:text-white-primary focus:outline focus:outline-white ${
+      className={`mr-2 text-red-primary hover:text-white-primary ${
         props.className || ""
       }`}
       onClick={async (e) => {
