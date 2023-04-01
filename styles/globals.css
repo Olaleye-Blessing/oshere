@@ -34,7 +34,7 @@
 
   a,
   button {
-    @apply transition duration-200 ease-linear inline-block outline-none border-none focus:outline-none;
+    @apply transition duration-200 ease-linear inline-block outline-none border border-transparent focus:outline-none focus:border-red-primary focus:border-opacity-50;
   }
 
   input {
