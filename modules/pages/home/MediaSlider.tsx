@@ -59,7 +59,7 @@ const MediaSlider: FC<Props> = ({ category, medias }) => {
                   className="overflow-hidden object-cover"
                 />
               </figure>
-              <div className="overflow-hidden relative z-20 bg-black bg-opacity-60 h-full flex flex-col px-2 pb-5 sm:px-4 md:px-5">
+              <div className="overflow-hidden relative z-20 bg-black bg-opacity-60 h-full flex flex-col px-16 pb-5">
                 <h3 className="mt-auto mb-0">
                   {(media as any).name || (media as any).title || "No Title"}
                 </h3>
