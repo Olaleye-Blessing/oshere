@@ -25,7 +25,7 @@ const Media: FC<MediaProps> = ({
         href={`/medias/${category}/${media.id}`}
         className="flex flex-col w-full h-full pb-12 transition-all duration-200 ease-in-out rounded-lg overflow-hidden bg-black bg-opacity-20 shadow-lg ring-white-primary ring-opacity-10 ring-1 hover:shadow-lg hover:bg-opacity-40 focus:ring-red-primary focus:ring-opacity-20 hover:scale-[1.03] focus:scale-[1.03]"
       >
-        <figure>
+        <figure className="h-[25.146875rem]">
           <Image
             src={`${TMDB_IMAGE_BASE_URL}/w500${media.poster_path}`}
             alt=""
